@@ -1,0 +1,37 @@
+services:
+  api:
+    image: golang:1.22.1-alpine
+    ports:
+      - 27400:27400
+    volumes:
+      - .:/app
+    environment:
+      - ENV=development
+    command: ['go', '-C', '/app/api', 'run', 'cmd/server/main.go', '-server', '-wd=/tmp']
+    networks:
+      - internal
+
+  cmu:
+    build: https://github.com/sdv43/docker-cmu-image.git#0.1.0
+    ports:
+      - 2900:80
+      - 2800:2800
+      - 2766:2766
+      - 2700:2700
+    volumes:
+      - .:/app
+    networks:
+      - internal
+    depends_on:
+      - api
+
+  node:
+    image: node:22-alpine
+    volumes:
+      - .:/app
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
