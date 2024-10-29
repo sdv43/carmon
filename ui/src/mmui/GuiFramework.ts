@@ -1,3 +1,4 @@
+import { startBatteryStatusChecker } from '../apps/carBattery'
 import { EHActions, EHConfigCtxt, EHResetCtxt } from '../apps/engineHours/app'
 import {
   startHoursCounter,
@@ -84,6 +85,14 @@ const patchRouteMmuiMsg = () => {
 }
 
 export const patchGuiFramework = () => {
+  log.addSrcFile('bundle.js', 'Carmon')
+  log.setLogLevel(
+    'Carmon',
+    process.env.NODE_ENV === 'development' ? 'debug' : 'info',
+  )
+
   patchSendEventToMmui()
   patchRouteMmuiMsg()
+
+  startBatteryStatusChecker()
 }

@@ -1,3 +1,4 @@
+import './apps/carBattery/index'
 import './apps/sensors/index'
 import './apps/engineHours/index'
 import './mmui/index'

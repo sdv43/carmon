@@ -2,7 +2,7 @@
 
 backup_file() {
     bfile="$1.backup"
-    
+
     if [ ! -e "$bfile" ]; then
         cp -a $1 $bfile
         echo "${1##*/} saved"
@@ -23,3 +23,4 @@ backup_file /jci/gui/resources/js/schedmaint/schedmaintAppDict_ru_RU.js
 backup_file /jci/gui/apps/schedmaint/js/schedmaintApp.js
 backup_file /jci/gui/resources/js/system/systemAppDict_ru_RU.js
 backup_file /jci/gui/apps/system/js/systemApp.js
+backup_file /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js

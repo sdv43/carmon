@@ -11,7 +11,7 @@ export const writeError = (msg: string, error: unknown) => {
     errMsg = error.message
   }
 
-  writeLog(msg + ', error: ' + errMsg)
+  log.info(`CARMON. ${msg}, error: ${errMsg}`)
 }
 
 export const delay = async (sec: number) =>

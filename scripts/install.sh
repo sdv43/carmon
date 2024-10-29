@@ -28,11 +28,16 @@ if [ ! -d $carmon_ dir ]; then
     mkdir $carmon_dir
 
     cp -r "${0%/*}/../ui/dist/bundle.js" $carmon_dir
+    cp -r "${0%/*}/../ui/dist/assets" $carmon_dir
     cp -r "${0%/*}/../api/dist/carmon" $carmon_dir
 
     echo "App files were copied"
 
     ln -sf $carmon_dir /jci/gui/carmon
+    ln -sf "$carmon_dir/assets/IcnSbCarBatt_1.png" /jci/gui/common/images/icons/IcnSbCarBatt_1.png
+    ln -sf "$carmon_dir/assets/IcnSbCarBatt_2.png" /jci/gui/common/images/icons/IcnSbCarBatt_2.png
+    ln -sf "$carmon_dir/assets/IcnSbCarBatt_3.png" /jci/gui/common/images/icons/IcnSbCarBatt_3.png
+    ln -sf "$carmon_dir/assets/IcnSbCarBatt_4.png" /jci/gui/common/images/icons/IcnSbCarBatt_4.png
 fi
 
 if is_need_backup_file /jci/scripts/stage_wifi.sh; then
@@ -113,4 +118,19 @@ if is_need_backup_file /jci/gui/apps/system/js/systemApp.js; then
         -e '/registerAppLoaded/i\' \
         -e 'applySensorsExt();' \
         /jci/gui/apps/system/js/systemApp.js
+fi
+
+if is_need_backup_file /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js; then
+    backup_file /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js
+
+    sed \
+        -i \
+        -e '/"Batt": "Batt",/a\' \
+        -e '"CarBatt": "CarBatt",' \
+        /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js
+
+    sed \
+        -i \
+        -e 's/"Traffic", "Roaming"/"Traffic", "Roaming", "CarBatt"/' \
+        /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js
 fi

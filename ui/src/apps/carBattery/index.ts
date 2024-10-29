@@ -1,0 +1,1 @@
+export { startBatteryStatusChecker } from './app'

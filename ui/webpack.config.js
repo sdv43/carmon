@@ -1,6 +1,7 @@
 /* eslint-disable */
 const path = require('path')
 const webpack = require('webpack')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   devtool: false,
@@ -35,6 +36,9 @@ module.exports = {
   plugins: [
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
+    }),
+    new CopyPlugin({
+      patterns: [{ from: 'src/assets', to: 'assets' }],
     }),
   ],
 }

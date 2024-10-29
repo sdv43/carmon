@@ -21,6 +21,10 @@ fi
 
 if [ -d "/tmp/mnt/data_persist/carmon" ]; then
     rm /jci/gui/carmon
+    rm /jci/gui/common/images/icons/IcnSbCarBatt_1.png
+    rm /jci/gui/common/images/icons/IcnSbCarBatt_2.png
+    rm /jci/gui/common/images/icons/IcnSbCarBatt_3.png
+    rm /jci/gui/common/images/icons/IcnSbCarBatt_4.png
     rm -rf /tmp/mnt/data_persist/carmon
 
     echo "App files were removed"
@@ -52,4 +56,8 @@ fi
 
 if is_backup_exists /jci/gui/apps/system/js/systemApp.js; then
     restore_backup_file /jci/gui/apps/system/js/systemApp.js
+fi
+
+if is_backup_exists /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js; then
+    restore_backup_file /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js
 fi

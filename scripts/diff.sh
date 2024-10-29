@@ -25,3 +25,4 @@ diff_file /jci/gui/resources/js/schedmaint/schedmaintAppDict_ru_RU.js
 diff_file /jci/gui/apps/schedmaint/js/schedmaintApp.js
 diff_file /jci/gui/resources/js/system/systemAppDict_ru_RU.js
 diff_file /jci/gui/apps/system/js/systemApp.js
+diff_file /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js

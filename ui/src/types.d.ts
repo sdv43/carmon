@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 declare const framework: {
   _focusStack: unknown
+  common: {
+    setSbIcon: (i: string, v: boolean, s: string) => void
+  }
   routeMmuiMsg: (opts: unknown) => void
   sendEventToMmui: (id: string, opts: unknown, p?: unknown) => void
   getCurrentApp: () => unknown
@@ -13,6 +16,8 @@ declare const framework: {
 
 declare const log: {
   info: (m: string) => void
+  addSrcFile: (f: string, m: string) => void
+  setLogLevel: (m: string, l: string) => void
 }
 
 declare const GuiFramework: any

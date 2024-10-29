@@ -7,6 +7,7 @@ import (
 	"os"
 	"path"
 
+	"github.com/sdv43/carmon/internal/carbatt"
 	"github.com/sdv43/carmon/internal/obd2"
 	"github.com/sdv43/carmon/internal/storage"
 )
@@ -57,6 +58,7 @@ func startServer(is bool, wd string) {
 	http.HandleFunc("/storage/set", storage.HandleStorageSave)
 	http.HandleFunc("/storage/get", storage.HandleStorageGet)
 	http.HandleFunc("/obd2/data", obd2.HandleOBD2Data)
+	http.HandleFunc("/carbattery", carbatt.HandleCarBatt)
 
 	writeToHealthFile(wd, "1")
 
